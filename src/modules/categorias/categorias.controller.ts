@@ -19,13 +19,6 @@ export class CategoriasController {
     async  findById(@Param('code') code: string): Promise<CategoriasEntity>{
         return this._categoriasService.findById(code);
     }
-/*
-    @Post()
-    @ApiOperation({summary: 'Crear una Categoría'})
-    async create(body: CategoriasEntity): Promise<CategoriasEntity>{
-    return this._categoriasService.create(body);        
-    }
-*/
     @Post()
     @ApiOperation({summary: 'Crear una Categoría'})
     @UsePipes(new ValidationPipe({whitelist:true}))
@@ -33,7 +26,7 @@ export class CategoriasController {
         // Promise<any>  o Promise<CategoriasEntity>
     return this._categoriasService.create(body);        
     }
-/*
+
     @Put(':code')
     @ApiOperation({summary:'Actualizar una Categoría'})
     async updateUser(@Param('code') code:string, @Body() body:CategoriasEntity ): Promise<CategoriasEntity>{
@@ -45,11 +38,11 @@ export class CategoriasController {
     async deleteUser(@Param('code') code:string):Promise<void>{
         return this._categoriasService.delete(code);
     }
-    
+
     @Get('/page/:page/records/:records')
     @ApiOperation({ summary: 'Obtener lista de Categorias, paginada' })
     async findAllPaginated(@Param('page') page:number,@Param('records') records : number): Promise<CategoriasEntity[]>{
         return this._categoriasService.getAllpaginated(page,records);
     }
-*/
+
 }

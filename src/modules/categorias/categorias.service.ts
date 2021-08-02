@@ -35,11 +35,11 @@ export class CategoriasService {
     }
 
     async create(body:CategoriasDto): Promise<any>{
-        const cod_cat=body.co_cat;
+        const cod_cat=body.coCat;
         const exists = await this._categoriasRepository.findBycode(cod_cat);
         if (exists) throw new BadRequestException('Código de Categoría ya existe');
         await this._categoriasRepository.create(body);
-        return new MessageDto(`Registro ${body.cat_des}  Insertado`); //
+        return new MessageDto(`Registro ${body.catDes}  Insertado`); //
     }
 
     async update(code: string, body: CategoriasEntity): Promise<CategoriasEntity> {
@@ -54,36 +54,6 @@ export class CategoriasService {
         return this._categoriasRepository.getAllpaginated(page,records);
      }
 
-
-/****  SEGUNDA ALTERNATIVA QUE FUNCIONA
-    async create(body:CategoriasDto): Promise<any>{
-        const cod_cat=body.co_cat;
-        const exists = await this._categoriasRepository.findOne({where:[{co_cat:cod_cat}]});
-        if (exists) throw new BadRequestException('Descripción de Categoría ya existe');
-        await this._categoriasRepository.save(body);
-        return new MessageDto(`Registro ${body.cat_des}  Insertado`); //
-    }
-
-    async getAllpaginated(page:number, records:number){
-        const dto=CategoriasEntity.count;
-     }
-
-     async findAll(): Promise<CategoriasEntity[]>{
-        const list=await this._categoriasRepository.find();
-        if(!list.length){
-            throw new NotFoundException( new MessageDto(`No hay Categoria en la Base de Datos`) );
-        }
-        return list
-    }
-
-    async findById(code:string): Promise<CategoriasEntity>{
-        const list=await this._categoriasRepository.findOne(code); 
-        if(!list){
-            throw new NotFoundException(new MessageDto(` No existe el Código para esta Categoría`) );
-        }
-        return list
-    }
-*/
 
 }
 
