@@ -5,13 +5,6 @@ import { CategoriasDto } from './categorias.dto';
 import { CategoriasEntity } from './categorias.entity';
 import { CategoriasRepository } from './categorias.repository';
 
-/*
-    constructor(
-        @InjectRepository(Categoria) 
-        private readonly _categoriaRepository : CategoriaRepository,
-    ){}
-
-*/
 @Injectable()
 export class CategoriasService { 
     constructor(private _categoriasRepository:CategoriasRepository ){

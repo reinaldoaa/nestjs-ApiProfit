@@ -21,14 +21,14 @@ export class CategoriasRepository  {
     }
 
     async getById(code : string): Promise<any>{ //Promise<CategoriasEntity>
-        const CodeFound = await this._categoriasRepository.findOne({where : [{co_cat:code}]});
+        const CodeFound = await this._categoriasRepository.findOne({where : [{coCat:code}]});
         if (!CodeFound){throw new NotFoundException(new MessageDto('No existe Categoría')); }
         //return CodeFound;
-        return this._categoriasRepository.findOne({where : [{co_cat:code}]});
+        return this._categoriasRepository.findOne({where : [{coCat:code}]});
     }
 
     async findBycode(code : string): Promise<CategoriasEntity>{ //Promise<>
-        return this._categoriasRepository.findOne({where : [{co_cat:code}]});
+        return this._categoriasRepository.findOne({where : [{coCat:code}]});
     }
 
 
@@ -57,7 +57,5 @@ export class CategoriasRepository  {
             take:records
         });
      }
-
-
 }//Fin de la class CategoriasRepository
 

@@ -17,6 +17,6 @@ async function bootstrap() {
   SwaggerModule.setup('api/v1/docs', app, document);
 
   await app.listen(AppModule.port);
-  Logger.log(`http://localhost:puerto--> ${AppModule.port}`,'Boostrap');
+  Logger.log(`http://localhost:puerto-->${AppModule.port}`,'Boostrap');
 }
 bootstrap();
