@@ -1,4 +1,4 @@
-import { DeleteResult, EntityRepository, Repository  } from "typeorm";
+import { EntityRepository, Repository  } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CategoriasEntity } from "./categorias.entity";
 import { CategoriasDto } from "./categorias.dto";
@@ -27,14 +27,12 @@ export class CategoriasRepository  {
         return this._categoriasRepository.findOne({where : [{coCat:code}]});
     }
 
-    async findBycode(code : string): Promise<CategoriasEntity>{ //Promise<>
+    async findBycode(code : string): Promise<CategoriasEntity>{ 
         return this._categoriasRepository.findOne({where : [{coCat:code}]});
     }
 
-
-    async create(body:CategoriasDto):Promise<any>{ //CategoriasEntity
+    async create(body:CategoriasDto):Promise<any>{ 
         return this._categoriasRepository.save(body);
-        //return this._categoriasRepository.create(body);
     }
    
     async update(code:string, body:CategoriasEntity):Promise<CategoriasEntity>{
@@ -42,8 +40,11 @@ export class CategoriasRepository  {
         return this._categoriasRepository.findOne(code);
     }
 
-    async delete(code:string):Promise<DeleteResult>{
-        return this._categoriasRepository.delete(code);
+    async delete(code:string):Promise<any>{
+        const CodeFound = await this._categoriasRepository.findOne(code);
+        if (!CodeFound){throw new NotFoundException(new MessageDto('La Categoría !No existe! '));}
+        if (CodeFound){throw new NotFoundException(new MessageDto(`Categoría ${CodeFound.catDes} Delete`));}
+        return  await this._categoriasRepository.delete(code);
     }
 
     async getAllpaginated(page:number, records:number): Promise<CategoriasEntity[]>{

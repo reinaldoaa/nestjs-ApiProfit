@@ -1,5 +1,4 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { MessageDto } from 'src/shared/message.dto';
 import { CategoriasDto } from './categorias.dto';
 import { CategoriasEntity } from './categorias.entity';

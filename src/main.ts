@@ -8,10 +8,10 @@ async function bootstrap() {
   app.setGlobalPrefix('api/v1'); //  http://website:port/api/version/endPointName
 
   const config = new DocumentBuilder()
-    .setTitle('Categorías')
-    .setDescription('The category API description')
+    .setTitle('API PROFIT')
+    .setDescription('FUERZA DE VENTAS')
     .setVersion('1.0')
-    .addTag('categ')
+    .addTag('ProfitAdmin')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/v1/docs', app, document);

@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule} from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CategoriasModule } from './modules/categorias/categorias.module';
+import { ProductosModule } from './modules/productos/productos.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -34,6 +35,7 @@ dotenv.config();
                 inject: [ConfigService] },),
                 //Incluir las entidades o tablas en esta region:
                 CategoriasModule,
+                ProductosModule,
                 ],
   controllers: [AppController],
   providers: [AppService],

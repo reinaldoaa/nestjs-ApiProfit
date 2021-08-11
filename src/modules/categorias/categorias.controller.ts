@@ -1,6 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
 import {ApiOperation } from '@nestjs/swagger';
-import { pipe } from 'rxjs';
 import { CategoriasDto } from './categorias.dto';
 import { CategoriasEntity } from './categorias.entity';
 import { CategoriasService } from './categorias.service';
@@ -20,11 +19,11 @@ export class CategoriasController {
     async  findById(@Param('code') code: string): Promise<CategoriasEntity>{
         return this._categoriasService.findById(code);
     }
+
     @Post()
     @ApiOperation({summary: 'Crear una Categoría'})
     @UsePipes(new ValidationPipe({whitelist:true}))
     async create(@Body() body: CategoriasDto):Promise<any>  { 
-    //async create(@Body(pipes:ValidationPipe) body: CategoriasDto)  { 
             return this._categoriasService.create(body);        
     }
 
