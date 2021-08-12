@@ -1,4 +1,4 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, Index, PrimaryColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, Index, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
 @Entity({name:'art',synchronize:false})
 export class ProductosEntity extends BaseEntity {    
@@ -26,7 +26,17 @@ export class ProductosEntity extends BaseEntity {
 
     @Column({name:'prec_vta1',type:'float',nullable:true,default:0}) 
     precVta1:number;
+    @Column({name:'prec_vta2',type:'float',nullable:true,default:0}) 
+    precVta2:number;
+    @Column({name:'prec_vta3',type:'float',nullable:true,default:0}) 
+    precVta3:number;
+    @Column({name:'prec_vta4',type:'float',nullable:true,default:0}) 
+    precVta4:number;
+    @Column({name:'prec_vta5',type:'float',nullable:true,default:0}) 
+    precVta5:number;
 
+    @Column({name:'ult_cos_un',type:'float',nullable:true,default:0}) 
+    ultCosUn:number;
     @Column({name:'cos_pro_un',type:'float',nullable:true,default:0}) 
     cosProUn:number;
 
@@ -38,35 +48,25 @@ export class ProductosEntity extends BaseEntity {
 
     @Column({name:'stock_act',type:'float',nullable:true,default:0}) 
     stockAct:number;
+    @Column({name:'tipo',type:'char',nullable:true,length:1}) 
+    tipo:string;
+    @Column({name:'anulado',type:'bigint',nullable:false}) //,default:false 
+    anulado:bigint;
+    @Column({name:'tipo_imp',type:'char',nullable:false,length:1}) 
+    tipoImp:string;
     
-    @Column({name:'prec_om',type:'float',nullable:true,default:0}) 
-    precOm:number;
+    @Column({name:'co_us_in',type:'char',nullable:false,length:6}) 
+    coUsIn:string;
+    @CreateDateColumn({name:'fe_us_in',type:'timestamp',default:()=>'CURRENT_TIMESTAMP',nullable:false})
+    feUsIn:Date;
 
+    @Column({name:'co_us_mo',type:'char',nullable:false,length:6,default:'   '}) 
+    coUsMo:string;
+    @UpdateDateColumn({name:'fe_us_mo',type:'timestamp',default:()=>'CURRENT_TIMESTAMP',nullable:true})
+    feUsMo:Date;
+
+    @Column({name:'co_sucu',type:'char',nullable:false,length:6,default:'   '}) 
+    coSucu:string;
+  
 }
-/*
 
-@UpdateDateColumn({type:'timestamp',name:'updated_ad',nullable:true})
-    updatedAt:Date;
-SELECT TOP 1000 
-      , item 
-      , ref 
-      , modelo 
-      , procedenci 
-      , comentario 
-      , prec_vta1 
-      , prec_vta2 
-      , prec_vta3 
-      , prec_vta4 
-      , prec_vta5 
-      , ult_cos_un 
-      , cos_pro_un 
-      , ult_cos_om 
-      , cos_pro_om 
-      , tipo 
-      , anulado 
-      , tipo_imp 
-      , co_us_mo 
-      , fe_us_mo 
-      , co_sucu 
-FROM  DEVELOP . dbo . art 
-*/

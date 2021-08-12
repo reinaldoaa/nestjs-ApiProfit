@@ -22,6 +22,4 @@ export class ProductosDto {
     cosProOm:number;
     @IsNumber()
     stockAct:number;
-    @IsNumber()
-    precOm:number;
 }
